@@ -105,20 +105,24 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['POTÊNCIA'] !== null ? autolinker.link(feature.properties['POTÊNCIA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">POTÊNCIA</th>\
+                        <td>' + (feature.properties['POTÊNCIA'] !== null ? autolinker.link(feature.properties['POTÊNCIA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">ILUMINÂNCI</th>\
                         <td>' + (feature.properties['ILUMINÂNCI'] !== null ? autolinker.link(feature.properties['ILUMINÂNCI'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['TECNOLOGIA'] !== null ? autolinker.link(feature.properties['TECNOLOGIA'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">TECNOLOGIA</th>\
+                        <td>' + (feature.properties['TECNOLOGIA'] !== null ? autolinker.link(feature.properties['TECNOLOGIA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['FABRICAÇÃO'] !== null ? autolinker.link(feature.properties['FABRICAÇÃO'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">FABRICAÇÃO</th>\
+                        <td>' + (feature.properties['FABRICAÇÃO'] !== null ? autolinker.link(feature.properties['FABRICAÇÃO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['INSTALAÇÃO'] !== null ? autolinker.link(feature.properties['INSTALAÇÃO'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">INSTALAÇÃO</th>\
+                        <td>' + (feature.properties['INSTALAÇÃO'] !== null ? autolinker.link(feature.properties['INSTALAÇÃO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">MODELO</th>\
@@ -129,7 +133,8 @@
                         <td>' + (feature.properties['S/N'] !== null ? autolinker.link(feature.properties['S/N'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['NÚMERO-NF'] !== null ? autolinker.link(feature.properties['NÚMERO-NF'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">NÚMERO-NF</th>\
+                        <td>' + (feature.properties['NÚMERO-NF'] !== null ? autolinker.link(feature.properties['NÚMERO-NF'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">FORNECEDOR</th>\
