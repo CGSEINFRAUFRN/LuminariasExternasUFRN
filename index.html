@@ -54,7 +54,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-5.781596995967273,-35.199257414312264],[-5.7799009618362716,-35.19634472883166]]);
+        }).fitBounds([[-5.857486485595945,-35.26232043809106],[-5.775313999018203,-35.12119441087544]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -105,24 +105,20 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">POTENCIA</th>\
-                        <td>' + (feature.properties['POTENCIA'] !== null ? autolinker.link(feature.properties['POTENCIA'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['POTÊNCIA'] !== null ? autolinker.link(feature.properties['POTÊNCIA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">ILUMINÂNCI</th>\
                         <td>' + (feature.properties['ILUMINÂNCI'] !== null ? autolinker.link(feature.properties['ILUMINÂNCI'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">TECNOLIGIA</th>\
-                        <td>' + (feature.properties['TECNOLIGIA'] !== null ? autolinker.link(feature.properties['TECNOLIGIA'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['TECNOLOGIA'] !== null ? autolinker.link(feature.properties['TECNOLOGIA'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">FABRICACAO</th>\
-                        <td>' + (feature.properties['FABRICACAO'] !== null ? autolinker.link(feature.properties['FABRICACAO'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['FABRICAÇÃO'] !== null ? autolinker.link(feature.properties['FABRICAÇÃO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">INSTALACAO</th>\
-                        <td>' + (feature.properties['INSTALACAO'] !== null ? autolinker.link(feature.properties['INSTALACAO'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['INSTALAÇÃO'] !== null ? autolinker.link(feature.properties['INSTALAÇÃO'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">MODELO</th>\
@@ -133,8 +129,7 @@
                         <td>' + (feature.properties['S/N'] !== null ? autolinker.link(feature.properties['S/N'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Numero-NF</th>\
-                        <td>' + (feature.properties['Numero-NF'] !== null ? autolinker.link(feature.properties['Numero-NF'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['NÚMERO-NF'] !== null ? autolinker.link(feature.properties['NÚMERO-NF'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">FORNECEDOR</th>\
@@ -157,7 +152,7 @@
         }
 
         function style_LUMINARIAS_EXTERNAS_1_0(feature) {
-            switch(String(feature.properties['TECNOLIGIA'])) {
+            switch(String(feature.properties['TECNOLOGIA'])) {
                 case 'LED':
                     return {
                 pane: 'pane_LUMINARIAS_EXTERNAS_1',
