@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-search.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
@@ -34,7 +35,8 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/LUMINARIAS_EXTERNAS_1.js"></script>
+        <script src="js/leaflet-search.js"></script>
+        <script src="data/LUMINARIAS_EXTERNAS_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +56,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-5.864278461288711,-35.26487682093937],[-5.761037212555687,-35.08756159371933]]);
+        }).fitBounds([[-5.855712841385889,-35.28135024972502],[-5.762799014089358,-35.10977602299035]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -74,20 +76,33 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleSatellite_0');
-        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
-        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleSatellite_0',
+        map.createPane('pane_GoogleHybrid_0');
+        map.getPane('pane_GoogleHybrid_0').style.zIndex = 400;
+        var layer_GoogleHybrid_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_0',
             opacity: 1.0,
-            attribution: '',
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
             maxZoom: 28,
-            minNativeZoom: 1,
-            maxNativeZoom: 30
+            minNativeZoom: 0,
+            maxNativeZoom: 20
         });
-        layer_GoogleSatellite_0;
-        map.addLayer(layer_GoogleSatellite_0);
-        function pop_LUMINARIAS_EXTERNAS_1(feature, layer) {
+        layer_GoogleHybrid_0;
+        map.addLayer(layer_GoogleHybrid_0);
+        map.createPane('pane_GoogleSatellite_1');
+        map.getPane('pane_GoogleSatellite_1').style.zIndex = 401;
+        var layer_GoogleSatellite_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_1',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_1;
+        map.addLayer(layer_GoogleSatellite_1);
+        function pop_LUMINARIAS_EXTERNAS_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -156,11 +171,11 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_LUMINARIAS_EXTERNAS_1_0(feature) {
+        function style_LUMINARIAS_EXTERNAS_2_0(feature) {
             switch(String(feature.properties['TECNOLOGIA'])) {
                 case 'LED':
                     return {
-                pane: 'pane_LUMINARIAS_EXTERNAS_1',
+                pane: 'pane_LUMINARIAS_EXTERNAS_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -176,7 +191,7 @@
                     break;
                 case '2a CPP DEODE':
                     return {
-                pane: 'pane_LUMINARIAS_EXTERNAS_1',
+                pane: 'pane_LUMINARIAS_EXTERNAS_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -192,7 +207,7 @@
                     break;
                 case 'LED VIAVEL':
                     return {
-                pane: 'pane_LUMINARIAS_EXTERNAS_1',
+                pane: 'pane_LUMINARIAS_EXTERNAS_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -208,7 +223,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_LUMINARIAS_EXTERNAS_1',
+                pane: 'pane_LUMINARIAS_EXTERNAS_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -224,26 +239,26 @@
                     break;
             }
         }
-        map.createPane('pane_LUMINARIAS_EXTERNAS_1');
-        map.getPane('pane_LUMINARIAS_EXTERNAS_1').style.zIndex = 401;
-        map.getPane('pane_LUMINARIAS_EXTERNAS_1').style['mix-blend-mode'] = 'normal';
-        var layer_LUMINARIAS_EXTERNAS_1 = new L.geoJson(json_LUMINARIAS_EXTERNAS_1, {
+        map.createPane('pane_LUMINARIAS_EXTERNAS_2');
+        map.getPane('pane_LUMINARIAS_EXTERNAS_2').style.zIndex = 402;
+        map.getPane('pane_LUMINARIAS_EXTERNAS_2').style['mix-blend-mode'] = 'normal';
+        var layer_LUMINARIAS_EXTERNAS_2 = new L.geoJson(json_LUMINARIAS_EXTERNAS_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_LUMINARIAS_EXTERNAS_1',
-            layerName: 'layer_LUMINARIAS_EXTERNAS_1',
-            pane: 'pane_LUMINARIAS_EXTERNAS_1',
-            onEachFeature: pop_LUMINARIAS_EXTERNAS_1,
+            dataVar: 'json_LUMINARIAS_EXTERNAS_2',
+            layerName: 'layer_LUMINARIAS_EXTERNAS_2',
+            pane: 'pane_LUMINARIAS_EXTERNAS_2',
+            onEachFeature: pop_LUMINARIAS_EXTERNAS_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_LUMINARIAS_EXTERNAS_1_0(feature));
+                return L.circleMarker(latlng, style_LUMINARIAS_EXTERNAS_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_LUMINARIAS_EXTERNAS_1);
-        map.addLayer(layer_LUMINARIAS_EXTERNAS_1);
+        bounds_group.addLayer(layer_LUMINARIAS_EXTERNAS_2);
+        map.addLayer(layer_LUMINARIAS_EXTERNAS_2);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -255,8 +270,15 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'LUMINARIAS_EXTERNAS<br /><table><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_1_LED0.png" /></td><td>LED</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_1_2ªCPP1.png" /></td><td>2ª CPP</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_1_LEDVIÁVEL2.png" /></td><td>LED VIÁVEL</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_1_LEDINVIÁVEL3.png" /></td><td>LED INVIÁVEL</td></tr></table>': layer_LUMINARIAS_EXTERNAS_1,"GoogleSatellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'LUMINARIAS_EXTERNAS<br /><table><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_2_LED0.png" /></td><td>LED</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_2_2ªCPP1.png" /></td><td>2ª CPP</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_2_LEDVIÁVEL2.png" /></td><td>LED VIÁVEL</td></tr><tr><td style="text-align: center;"><img src="legend/LUMINARIAS_EXTERNAS_2_LEDINVIÁVEL3.png" /></td><td>LED INVIÁVEL</td></tr></table>': layer_LUMINARIAS_EXTERNAS_2,"Google Satellite": layer_GoogleSatellite_1,"Google Hybrid": layer_GoogleHybrid_0,},{collapsed:false}).addTo(map);
         setBounds();
+        map.addControl(new L.Control.Search({
+            layer: layer_LUMINARIAS_EXTERNAS_2,
+            initial: false,
+            hideMarkerOnCollapse: true,
+            propertyName: 'POTÊNCIA'}));
+        document.getElementsByClassName('search-button')[0].className +=
+         ' fa fa-binoculars';
         </script>
     </body>
 </html>
